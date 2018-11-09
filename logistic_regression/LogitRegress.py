@@ -7,7 +7,7 @@ def loadDataSet():
     f = open('logistic_regression/testSet.txt')
     for line in f.readlines():
         lineArr = line.strip().split()
-        dataMat.append([float(lineArr[0]), float(lineArr[1]), 1.0])  #这个1.0是偏置
+        dataMat.append([1.0, float(lineArr[0]), float(lineArr[1])])  #这个1.0是偏置
         dataLabel.append(int(lineArr[2]))
     return dataMat, dataLabel
 
@@ -50,8 +50,8 @@ def plotResult(weights):
     ax = fig.add_subplot(111)
     ax.scatter(xcord1, ycord1, s=30, c='red', marker='s')
     ax.scatter(xcord2, ycord2, s=30, c='green')
-    x = np.arange(-3.0, 3.0, 0.1)
-    y = (-weights[0]-weights[1]*x)/weights[2]
+    x = np.linspace(-4, 4)
+    y = (-weights[0, 0]-weights[1, 0]*x)/weights[2, 0]
     ax.plot(x, y)
     plt.xlabel('X1')
     plt.ylabel('X2')
