@@ -20,9 +20,9 @@ def loadData(filename):
     return np.array(dataMat), np.array(labelMat)
 
 
-# X:训练集 i:样本序号 sigmar:高斯核的带宽,返回的是第j个样本与所有样本的高斯核
-# 即 K(i, j) {i=1, m} m为样本大小，sigmar为选择高斯核的参数，不选择不起作用
 def Kernel(X, j, sigmar, ker='Rbf'):  
+    """X:训练集 i:样本序号 sigmar:高斯核的带宽,返回的是第j个样本与所有样本的高斯核
+    即 K(i, j) {i=1, m} m为样本大小，sigmar为选择高斯核的参数，不选择不起作用"""
     m, n = np.shape(X)
     K = np.mat(np.zeros((m, 1)))
     if(ker == 'line'):
@@ -156,15 +156,9 @@ class SVM:
                 boundValue = False
             elif(alphachanged == 0):
                 boundValue = True
-    
-#这是线性可分的时候可以用的
-    def calWB(self):
-        self.outCir()
-        W = np.multiply(self.alpha, self.Y).T * self.X
-        return W, self.b
 
     
-
+#预测数据的函数，核函数需要重新处理
     def pridict(self, testData, testLabel):
         self.outCir()
         W, b = self.calWB()
