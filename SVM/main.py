@@ -2,7 +2,7 @@ import numpy as np
 import os.path
 import re
 import matplotlib.pyplot as plt
-os.chdir('e:/vscode/machine_learning/SVM/')
+os.chdir('F:/machine_learning/SVM/')
 
 
 def loadData(filename):
@@ -157,17 +157,9 @@ class SVM:
             elif(alphachanged == 0):
                 boundValue = True
     
-#这是线性可分的时候可以用的
-    def calWB(self):
-        self.outCir()
-        W = np.multiply(self.alpha, self.Y).T * self.X
-        return W, self.b
-
-    
 
     def pridict(self, testData, testLabel):
         self.outCir()
-        W, b = self.calWB()
         m, n = np.shape(testData)
         label = []
         k = 0

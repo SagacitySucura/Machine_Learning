@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt 
 import os.path
 import re
-os.chdir('e:/vscode/machine_learning/SVM/')
+os.chdir('F:/machine_learning/SVM/')
 
 
 def loadData(filename):
